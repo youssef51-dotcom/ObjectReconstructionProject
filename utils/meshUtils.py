@@ -23,7 +23,7 @@ def smooth_point_cloud(pcd, k=10, alpha=0.3, iterations=1):
     return pcd
 
 
-def fill_holes_and_smooth(input_mesh_path, output_mesh_path, max_hole_size=1000000, smooth_iterations=3):
+def fill_holes_and_smooth(input_mesh_path, output_mesh_path, max_faces = 50000, max_hole_size=1000000, smooth_iterations=3):
     """
     Fills holes in a mesh, smooths it, and recomputes normals using PyMeshLab.
 
@@ -45,6 +45,11 @@ def fill_holes_and_smooth(input_mesh_path, output_mesh_path, max_hole_size=10000
     # Recompute normals
     ms.apply_filter('compute_normal_per_face')
     ms.apply_filter('compute_normal_per_vertex')
+
+    # Decimate mesh to <= max_faces (Quadric Edge Collapse)
+    current_faces = ms.current_mesh().face_number()
+    if current_faces > max_faces:
+        ms.meshing_decimation_quadric_edge_collapse(targetfacenum=max_faces, preservenormal=True, preservetopology=True)
 
     # Save final mesh
     ms.save_current_mesh(output_mesh_path)
