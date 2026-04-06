@@ -19,10 +19,10 @@ def cleanMesh(mesh,outputPath):
     mesh.remove_non_manifold_edges()
 
     # --- Fill big holes safely ---
-    #mesh = fill_big_holes_planar(mesh)
+    mesh = fill_big_holes_planar(mesh)
 
     # --- Remove any NaNs in vertices ---
-    #mesh = remove_nan_vertices(mesh)
+    mesh = remove_nan_vertices(mesh)
 
     # --- Smooth ---
     mesh = mesh.filter_smooth_laplacian(number_of_iterations=3)
@@ -35,25 +35,8 @@ def cleanMesh(mesh,outputPath):
     # Extract vertices and faces as NumPy arrays
     vertices = np.asarray(mesh.vertices)
     faces = np.asarray(mesh.triangles)
-
-    # -----------------------------
-    # 2. Load mesh into PyMeshLab
-    # -----------------------------
-    """
-    print("create mesh in pymeshlab")
-    ms = pymeshlab.MeshSet()
-    ms.add_mesh(pymeshlab.Mesh(vertex_matrix=vertices, face_matrix=faces), "mesh_from_o3d")
-    print("mesh created in pymeshlab")
-
-    # Fill holes and smooth
-    fill_holes_and_smooth(
-        ms,
-        output_mesh_path=outputPath,
-        max_hole_size=100000,
-        smooth_iterations=3
-    )
-    """
-    # After your Poisson reconstruction
+    
+    # before pymeshlab hole fill
     o3d.io.write_triangle_mesh("output/mesh_before_holes.ply", mesh)
 
     # Fill holes and smooth
