@@ -8,8 +8,10 @@ def poissonDepth():
         raise ValueError("Point cloud is empty.")
 
     # 1. cleaning
-    pcd, _ = pcd.remove_statistical_outlier(nb_neighbors=20, std_ratio=2.0)
+    pcd, _ = pcd.remove_statistical_outlier(nb_neighbors=20, std_ratio=0.75)
     pcd = smooth_point_cloud(pcd, k=8, alpha=0.15, iterations=2)
+
+    o3d.io.write_point_cloud("output/sparse_points_filtered.ply",pcd)
 
     # 2. Adaptive normals
     distances = pcd.compute_nearest_neighbor_distance()
