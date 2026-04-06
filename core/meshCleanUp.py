@@ -19,10 +19,10 @@ def cleanMesh(mesh,outputPath):
     mesh.remove_non_manifold_edges()
 
     # --- Fill big holes safely ---
-    mesh = fill_big_holes_planar(mesh)
+    #mesh = fill_big_holes_planar(mesh)
 
     # --- Remove any NaNs in vertices ---
-    mesh = remove_nan_vertices(mesh)
+    #mesh = remove_nan_vertices(mesh)
 
     # --- Smooth ---
     mesh = mesh.filter_smooth_laplacian(number_of_iterations=3)
