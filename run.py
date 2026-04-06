@@ -20,7 +20,8 @@ def main():
     # Step 1: SfM
     print("[Step 1] Running SfM...")
     start_time = time.time()
-    #on cuda I would have enabled cuda based colmap that is faster
+    #on cuda I would have enabled cuda based colmap that is faster and also enables to
+    # generate a dense point cloud, that would have made mesh reconstruction much easier and more precise
     #I would also have had a more independant batch minded way to do things
     #N.B: this approach works mainly with textured objects for non textured ones I would use a DL method
     #that generates depth maps from images and maybe combine even with a very sparse reconstruction to constraint scale
