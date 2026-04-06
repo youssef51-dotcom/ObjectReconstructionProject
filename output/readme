@@ -1,0 +1,12 @@
+## Example Output
+
+After running:
+
+python run.py --input ./dataset --output ./output/clean_mesh.ply
+
+You will get:
+
+* Cleaned and smoothed mesh: clean_mesh.ply.
+* Sparse point cloud: sparse_points.ply.
+* Mesh before hole filling: mesh_before_holes.ply.
+* Camera poses visualization: camera_poses.ply.
