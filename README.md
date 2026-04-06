@@ -30,23 +30,14 @@ and smoothing using Open3D and PyMeshLab.
 ## Project Structure
 .
 ├── run.py                   # Main entry point
-
 ├── core
-
 │   ├── sfmPipeline.py       # COLMAP SfM pipeline
-
 │   ├── PoissonMeshGeneration.py  # Poisson mesh reconstruction
-
 │   └── meshCleanUp.py       # Mesh cleaning and smoothing
-
 ├── utils
-
 │   ├── meshUtils.py         # Mesh processing helpers
-
 │   ├── platformInfo.py      # Logs system/CPU/GPU info
-
 │   └── image_utils.py       # contains code useful for colmap
-
 └── dataset                  # Input images (user-provided)
 
 
