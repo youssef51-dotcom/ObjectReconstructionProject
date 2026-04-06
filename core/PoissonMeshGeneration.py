@@ -11,7 +11,6 @@ def poissonDepth():
     # 1. cleaning
     pcd, _ = pcd.remove_statistical_outlier(nb_neighbors=10, std_ratio=2)
     pcd = smooth_point_cloud(pcd, k=8, alpha=0.1, iterations=2)
-    o3d.io.write_point_cloud("output/sparse_points_filtered.ply", pcd)
 
     # 2. Adaptive normals
     distances = pcd.compute_nearest_neighbor_distance()
@@ -31,9 +30,6 @@ def poissonDepth():
     )
     densities = np.asarray(densities)
     mesh.remove_vertices_by_mask(densities < np.quantile(densities, 0.1))
-
-    # After Poisson reconstruction
-    o3d.io.write_triangle_mesh("output/after_poisson.ply", mesh)
 
     # Final smoothing
     mesh = mesh.filter_smooth_taubin(number_of_iterations=7)
