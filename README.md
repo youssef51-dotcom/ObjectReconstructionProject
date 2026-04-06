@@ -87,7 +87,7 @@ The pipeline will also generate intermediate files in the `output` directory:
 
    * Reads sparse point cloud.
    * Cleans and smooths point cloud.
-   * Estimates normals and performs two-stage Poisson reconstruction for better mesh density.
+   * Estimates normals and performs Poisson reconstruction.
 
 3. Mesh Cleaning & Smoothing
 
