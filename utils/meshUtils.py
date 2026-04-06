@@ -51,6 +51,20 @@ def fill_holes_and_smooth(input_mesh_path, output_mesh_path, max_faces = 50000, 
     if current_faces > max_faces:
         ms.meshing_decimation_quadric_edge_collapse(targetfacenum=max_faces, preservenormal=True, preservetopology=True)
 
+    # Remove duplicate faces
+    ms.apply_filter("meshing_remove_duplicate_faces")
+
+    # Remove duplicate vertices
+    ms.apply_filter("meshing_remove_duplicate_vertices")
+
+    # Remove degenerate faces
+    ms.apply_filter("meshing_remove_null_faces")
+
+    # Remove non-manifold edges
+    ms.apply_filter("meshing_repair_non_manifold_edges")
+
+    # (Optional but recommended)
+    ms.apply_filter("meshing_repair_non_manifold_vertices")
     # Save final mesh
     ms.save_current_mesh(output_mesh_path)
     print(f"Mesh processed and saved: {output_mesh_path}")
