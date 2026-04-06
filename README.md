@@ -21,7 +21,8 @@ and smoothing using Open3D and PyMeshLab.
 ## Requirements
 
 * Python 3.11+
-* [COLMAP](https://colmap.github.io/ release 4.0.2) installed and accessible via binaries and bin added to system path. 
+* [COLMAP](https://colmap.github.io/ release 4.0.2) installed and accessible via binaries and bin added to system path.
+* COLMAP download link: https://github.com/colmap/colmap/releases/tag/4.0.2 
 * Python packages (can be installed via pip):
 
   pip install torch numpy open3d pycolmap pymeshlab sympy
