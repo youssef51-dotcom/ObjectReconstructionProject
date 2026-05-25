@@ -60,10 +60,16 @@ Run the main pipeline with:
 
 python run.py --input ./dataset --output ./output/clean_mesh.ply
 
+New command Line
+python run.py --input ./dataset --output ./output --outputName clean_mesh.ply --reconstructionType Colmap
+
 ### Arguments
 
 * --input: Path to folder containing input images.
 * --output: Path to save the final cleaned mesh (PLY or OBJ).
+* --output: Path to save all outputs of the code
+* --outputName: Name of the final cleaned mesh (PLY or OBJ) will be put in output directory.
+* --reconstructionType: Type of reconstruction Colmap ColmapDense Nerf...
 * --resize_width: Width to resize images before processing (default: 960).
 * --resize_height: Height to resize images before processing (default: 540).
 
